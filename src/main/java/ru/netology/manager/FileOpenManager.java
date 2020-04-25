@@ -1,40 +1,44 @@
 package ru.netology.manager;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+import javax.lang.model.element.Name;
+import java.lang.annotation.Native;
 import java.security.Key;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-import static javafx.scene.input.KeyCode.V;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class FileOpenManager {
+    private Map<String, String> applications = new HashMap<>();
 
-    public void put(K key, V value){
+    public void add(String extension, String name){
+        applications.put( ".html","Google Chrome");
     }
 
-    public void putAll(Map<? extends K,? extends V> m){
-
+    public void getByExtension(String name){
+        for (){
+        if (getByExtension();)
+        }
     }
 
-    public void getName(Object key){
-
+    public void remove(String extension, String name){
+        applications.remove(extension);
     }
 
-    public void removeConnection(Object key, Object value){
-        if (map.containsKey(key) && Objects.equals(map.get(key), value)) {
-            map.remove(key);
-            return true;
-        } else
-            return false;
-
+    public void getAllWithValue(String extension, String name){
+      if (extension.equalsIgnoreCase(applications.get(name))){
+          applications.get(extension);
+      }
     }
 
-    public void getAllRegistered(){
-
+    public void getAll(String extension){
+            applications.get(extension);
+        }
     }
 
-    public void getAll(){
-
-    }
-}
