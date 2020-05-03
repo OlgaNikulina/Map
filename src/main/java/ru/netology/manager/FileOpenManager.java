@@ -12,25 +12,28 @@ import java.util.*;
 @NoArgsConstructor
 @Data
 public class FileOpenManager {
-    private Map<String, String> applications = new HashMap<>(Locale.getDefault());
+    private String lawCase = "все в нижнем регистре";
+    private String data = lawCase.toLowerCase();
 
-        public void add(String extension, String name) {
+    private Map<String, String> applications = new HashMap<>();
+
+    public void add(String extension, String name) {
         applications.put(extension, name);
     }
 
-    public void getByExtension() {
-        applications.get(".html");
+    public void getByExtension(String extension) {
+        applications.get(extension);
     }
 
     public void remove(String extension) {
         applications.remove(extension);
     }
 
-    public Set<String> getAllExtensions(String extension) {
+    public Set<String> getAllExtensions() {
         return applications.keySet();
     }
 
-    public Collection<String> getAllApplications(String name) {
-           return applications.values();
+    public Collection<String> getAllApplications() {
+        return applications.values();
     }
 }
