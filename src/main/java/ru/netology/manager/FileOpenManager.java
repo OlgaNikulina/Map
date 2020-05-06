@@ -10,8 +10,6 @@ import java.util.*;
 @NoArgsConstructor
 @Data
 public class FileOpenManager {
-    private String lawCase = "все в нижнем регистре";
-    private String data = lawCase.toLowerCase();
 
     private Map<String, String> applications = new HashMap<>();
 
