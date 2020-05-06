@@ -1,10 +1,8 @@
 package ru.netology.manager;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 import java.util.*;
 
@@ -21,8 +19,8 @@ public class FileOpenManager {
         applications.put(extension, name);
     }
 
-    public void getByExtension(String extension) {
-        applications.get(extension);
+    public String getByExtension(String extension) {
+        return applications.get(extension);
     }
 
     public void remove(String extension) {
