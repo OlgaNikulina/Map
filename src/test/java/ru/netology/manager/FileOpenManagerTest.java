@@ -1,23 +1,15 @@
 package ru.netology.manager;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
-import lombok.Value;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.security.Key;
-import java.util.*;
+import java.util.Collection;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FileOpenManagerTest {
     FileOpenManager manager = new FileOpenManager();
-    String extension;
-    String name;
-    Map<String, String> first = new HashMap<>(".fb2", "eBook");
-    Map<String, String> second = new HashMap<>(".flac", "WMP");
-    Map<String, String> third = new HashMap<>(".html", "Chrome");
 
     @BeforeEach
     void shouldSetUp() {
@@ -28,30 +20,29 @@ class FileOpenManagerTest {
 
     @Test
     void shouldGetByExtension() {
-        Map.of();
         final String actual = manager.getByExtension(".flac");
-        Map<String, String> expected = second;
-        assertEquals(expected, actual);
+        assertEquals("WMP", actual);
     }
 
     @Test
     void shouldRemove() {
-        Map.entry(".fb2", "eBook");
         manager.remove(".fb2");
-        Map<String, String> expected = null;
+        final Collection<String> expected = Set.of("Chrome", "WMP");
+        final Collection<String> actual = Set.copyOf(manager.getAllApplications());
+        assertEquals(expected, actual);
     }
 
     @Test
     void shouldGetAllExtensions() {
         final Set<String> actual = manager.getAllExtensions();
-        Map<String, String> expected = new HashMap<>(".fb2", ".flac", ".html");
+        Set<String> expected = Set.of(".fb2", ".flac", ".html");
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldGetAllApplications() {
-        final Collection<String> actual = manager.getAllApplications();
-        Map<String, String> expected = new HashMap<>(first, second, third);
+        final Set<String> actual = Set.copyOf(manager.getAllApplications());
+        Set<String> expected = Set.of("Chrome", "WMP", "eBook");
         assertEquals(expected, actual);
     }
 }
